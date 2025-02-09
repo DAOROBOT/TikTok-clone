@@ -1,0 +1,40 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+# Ignore thư mục build
+/build/
+/app/build/
+
+# Ignore cache Gradle
+.gradle/
+/app/.gradle/
+/.idea/
+/app/.idea/
+
+# Ignore file cấu hình cá nhân
+
+*.log
+
+
+# Ignore file biên dịch, APK, và thư viện
+*.apk
+*.jar
+*.dex
+*.class
+
+# Ignore output của Android Studio
+captures/
+output.json
+
