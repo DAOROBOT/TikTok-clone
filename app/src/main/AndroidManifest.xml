@@ -29,6 +29,9 @@
             android:name=".CameraScreen"
             android:exported="false" />
         <activity
+            android:name=".ProfileScreen"
+            android:exported="false" />
+        <activity
             android:name=".SearchScreen"
             android:exported="false" />
         <activity

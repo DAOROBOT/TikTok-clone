@@ -22,6 +22,9 @@ public class HomeScreen extends AppCompatActivity {
     RelativeLayout search_button;
     RelativeLayout plus_button;
     RelativeLayout noti_button;
+
+//    RelativeLayout profile_button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,5 +80,14 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+//        RelativeLayout profile_button = findViewById(R.id.info_page);
+//        profile_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(HomeScreen.this, ProfileScreen.class);
+//                startActivity(intent);
+//            }
+//        });
+
     }
 }
