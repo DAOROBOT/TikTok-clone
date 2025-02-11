@@ -20,6 +20,8 @@ public class HomeScreen extends AppCompatActivity {
     VideoView mainVideo;
     RelativeLayout comment_button;
     RelativeLayout search_button;
+
+    RelativeLayout plus_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,5 +59,14 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
+
+        plus_button = findViewById(R.id.upload_page);
+        plus_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreen.this, CameraScreen.class);
+                startActivity(intent);
+            }
+        });
     }
 }
