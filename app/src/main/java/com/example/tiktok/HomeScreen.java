@@ -20,8 +20,8 @@ public class HomeScreen extends AppCompatActivity {
     VideoView mainVideo;
     RelativeLayout comment_button;
     RelativeLayout search_button;
-
     RelativeLayout plus_button;
+    RelativeLayout noti_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +65,15 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeScreen.this, CameraScreen.class);
+                startActivity(intent);
+            }
+        });
+
+        noti_button = findViewById(R.id.notifi_page);
+        noti_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreen.this, NotificationScreen.class);
                 startActivity(intent);
             }
         });

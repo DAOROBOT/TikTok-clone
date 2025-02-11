@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- Các quyền cho camera và microphone -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- Thêm tag <uses-feature> cho Camera -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" /> <!-- Cung cấp quyền WRITE_EXTERNAL_STORAGE cho Android 9 (API 28) -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TikTok"
-        tools:targetApi="28"> <!-- Cập nhật lại target API cho Android 9 (API 28) -->
+        tools:targetApi="28">
+        <activity
+            android:name=".NotificationScreen"
+            android:exported="false" />
+        <!-- Cập nhật lại target API cho Android 9 (API 28) -->
         <activity
             android:name=".CameraScreen"
             android:exported="false" />
@@ -26,19 +39,10 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
-    <!-- Các quyền cho camera và microphone -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
-    <!-- Thêm tag <uses-feature> cho Camera -->
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
-
-    <!-- Cung cấp quyền WRITE_EXTERNAL_STORAGE cho Android 9 (API 28) -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
 
 </manifest>
