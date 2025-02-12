@@ -22,9 +22,11 @@
         android:theme="@style/Theme.TikTok"
         tools:targetApi="28">
         <activity
-            android:name=".NotificationScreen"
+            android:name=".EditProfile"
             android:exported="false" />
-        <!-- Cập nhật lại target API cho Android 9 (API 28) -->
+        <activity
+            android:name=".NotificationScreen"
+            android:exported="false" /> <!-- Cập nhật lại target API cho Android 9 (API 28) -->
         <activity
             android:name=".CameraScreen"
             android:exported="false" />
