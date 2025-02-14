@@ -3,7 +3,10 @@ package com.example.tiktok;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
+import android.view.View;
 import android.widget.RelativeLayout;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -18,6 +21,7 @@ public class ProfileScreen extends AppCompatActivity {
     private VideoAdapter videoAdapter;
     private List<Video> videoList;
     RelativeLayout home_button;
+    RelativeLayout edit_profile_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,15 @@ public class ProfileScreen extends AppCompatActivity {
         home_button.setOnClickListener(v -> {
             Intent intent = new Intent(ProfileScreen.this, HomeScreen.class);
             startActivity(intent);
+        });
+
+        edit_profile_button = findViewById(R.id.edit_profile_btn);
+        edit_profile_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileScreen.this, EditProfile.class);
+                startActivity(intent);
+            }
         });
     }
 }

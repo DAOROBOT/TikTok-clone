@@ -196,7 +196,8 @@
                 android:paddingHorizontal="20dp">
 
                 <!-- Nút Edit Profile -->
-                <LinearLayout
+                <RelativeLayout
+                    android:id="@+id/edit_profile_btn"
                     android:layout_width="120dp"
                     android:layout_height="45dp"
                     android:orientation="horizontal"
@@ -212,7 +213,7 @@
                         android:text="Edit Profile"
                         android:textSize="14sp"
                         android:textColor="@color/black"/>
-                </LinearLayout>
+                </RelativeLayout>
 
 
                 <!-- Khoảng cách giữa nút và icon -->
