@@ -1,60 +1,49 @@
 package com.example.tiktok;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-import android.widget.VideoView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager2.widget.ViewPager2;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {
 
-    VideoView mainVideo;
-    RelativeLayout comment_button;
     RelativeLayout search_button;
     RelativeLayout plus_button;
     RelativeLayout noti_button;
-    RelativeLayout share_button;
     RelativeLayout profile_button;
-    RelativeLayout download_button;
+
+    private ViewPager2 viewPager;
+    private VideoAdapter videoAdapter;
+    private List<Video> videoItems;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_screen);
 
-        mainVideo = findViewById(R.id.video);
-        mainVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.main_video));
-        mainVideo.start();
-        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.main_video);
+        // Khởi tạo danh sách video
+        videoItems = new ArrayList<>();
+        videoItems.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.main_video, "@karenne", "345k", "54", "Waiting for you", "#mangden #kontum #dance"));
+        videoItems.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.video_2, "@john_doe", "120k", "30", "Smooth vibes", "đám dỗ bên cồn"));
+        videoItems.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.video_3, "@tiktok_user", "900k", "150", "Let's dance", "#beoitutu"));
 
-//        MediaController media_controller = new MediaController(this);
-//        media_controller.setMediaPlayer(mainVideo);
-//        mainVideo.setMediaController(media_controller);
+        // Thêm các video khác vào danh sách videoItems
 
-        comment_button = findViewById(R.id.comment);
-        comment_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeScreen.this, CommentScreen.class);
+        // Set ViewPager2 adapter
+        viewPager = findViewById(R.id.viewPager);
+        videoAdapter = new VideoAdapter(videoItems, this); // Đảm bảo rằng context được truyền vào
+        viewPager.setAdapter(videoAdapter);
 
-                // Truyền URI dưới dạng string (hoặc bạn có thể putParcelable nếu muốn)
-                intent.putExtra("VIDEO_URI", videoUri.toString());
-
-                startActivity(intent);
-            }
-        });
+        // Thiết lập ViewPager2 cuộn dọc
+        viewPager.setOrientation(ViewPager2.ORIENTATION_VERTICAL); // Chuyển thành cuộn dọc
 
         search_button = findViewById(R.id.search_page);
         search_button.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +53,6 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         plus_button = findViewById(R.id.upload_page);
         plus_button.setOnClickListener(new View.OnClickListener() {
@@ -84,16 +72,6 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        share_button = findViewById(R.id.share);
-        share_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeScreen.this, ShareScreen.class);
-                // Truyền URI dưới dạng string (hoặc bạn có thể putParcelable nếu muốn)
-                intent.putExtra("VIDEO_URI", videoUri.toString());
-                startActivity(intent);
-            }
-        });
         profile_button = findViewById(R.id.info_page);
         profile_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,42 +80,5 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-        download_button = findViewById(R.id.download);
-        download_button.setOnClickListener(view -> {
-            showDownloadDialog();
-        });
-    }
-
-    // Method to show the download confirmation dialog
-    private void showDownloadDialog() {
-        // Create the AlertDialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(HomeScreen.this);
-        builder.setTitle("Tải xuống video này")
-                .setMessage("Bạn có chắc chắn muốn tải video này xuống?")
-                .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Handle "Đồng ý" button click (start download)
-                        startDownload();
-                    }
-                })
-                .setNegativeButton("Hủy bỏ", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Handle "Hủy bỏ" button click (cancel download)
-                        dialog.dismiss();
-                    }
-                })
-                .create()
-                .show();
-    }
-
-    // Method to simulate video download
-    private void startDownload() {
-        // Simulate the video download process here
-        // For now, you can just show a toast as a placeholder
-        Toast.makeText(HomeScreen.this, "Video đang được tải xuống...", Toast.LENGTH_SHORT).show();
     }
 }
