@@ -5,18 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="50dp">
+    android:layout_marginBottom="0dp">
 
     <VideoView
         android:id="@+id/video"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="60dp">
+        android:layout_marginBottom="0dp">
         <!--        AVT người dùng-->
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avt"
@@ -153,7 +154,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
                 android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="24dp"
                 android:text="Download"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
